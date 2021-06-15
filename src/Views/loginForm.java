@@ -57,7 +57,7 @@ public class loginForm extends javax.swing.JFrame {
         loginUsername.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         loginUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         loginUsername.setText("Digite seu nome de usuário");
-        loginUsername.setToolTipText("");
+        loginUsername.setToolTipText("Nome de usuário");
         loginUsername.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         loginUsername.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         loginUsername.setFocusCycleRoot(true);
@@ -79,7 +79,7 @@ public class loginForm extends javax.swing.JFrame {
         loginPassword.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
         loginPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         loginPassword.setText("Digite a senha");
-        loginPassword.setToolTipText("");
+        loginPassword.setToolTipText("Palavra-passe");
         loginPassword.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         loginPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         loginPassword.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -342,7 +342,8 @@ public class loginForm extends javax.swing.JFrame {
                 Inicio home = new Inicio();
                 dispose();
                 home.setVisible(true);
-                
+                home.LoggedIn(username);
+                home.SetUnset();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário ou Senha Inválida");
             }

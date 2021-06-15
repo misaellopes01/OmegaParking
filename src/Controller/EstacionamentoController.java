@@ -11,7 +11,7 @@ package Controller;
  */
 public class EstacionamentoController {
 private int total, totalFree, totalNotFree, ID, id_carro, id_lugar, fluxo_id;
-    private String proprietario, veiculo, entrada, saida, tipo, totalHora;
+    private String proprietario, veiculo, entrada, saida, tipo, totalHora, totalUsoCar;
     /**
      * @return the tipo
      */
@@ -194,6 +194,20 @@ private int total, totalFree, totalNotFree, ID, id_carro, id_lugar, fluxo_id;
      */
     public void setTotalHora(String totalHora) {
         this.totalHora = totalHora;
+    }
+
+    /**
+     * @return the totalUsoCar
+     */
+    public String getTotalUsoCar() {
+        return totalUsoCar;
+    }
+
+    /**
+     * @param totalUsoCar the totalUsoCar to set
+     */
+    public void setTotalUsoCar(String totalUsoCar) {
+        this.totalUsoCar = totalUsoCar;
     }
 
     /**
