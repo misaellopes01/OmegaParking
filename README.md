@@ -5,8 +5,8 @@
 <hr>
 <h3>Developed With</h3>
 <ul>
- <li>Java</li>
- <li>MySQL</li>
+ <li>Java  [Apache NetBeans]</li>
+ <li>MySQL [phpMyAdmin]</li>
 </ul>
 <hr>
 <h2>Developed By <em>Misael Lopes</em></h2>
