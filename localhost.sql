@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 15, 2021 at 02:31 AM
+-- Generation Time: Jun 17, 2021 at 02:06 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.13
 
@@ -28,8 +28,6 @@ USE `parque`;
 --
 -- Table structure for table `clientes`
 --
--- Creation: May 25, 2021 at 02:51 PM
---
 
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
@@ -47,14 +45,15 @@ INSERT INTO `clientes` (`id`, `nome`, `sobrenome`, `tipo`) VALUES
 (5, 'Ernesto', 'Rafael', 'Visitante'),
 (10, 'Ely', 'Cleófas', 'Funcionário'),
 (11, 'Homem', 'Aranha', 'Visitante'),
-(12, 'Erikson', 'Morenaile', 'Funcionário');
+(12, 'Erikson', 'Morenaile', 'Funcionário'),
+(13, 'Yessir', 'Gamba', 'Visitante'),
+(14, 'Isaac', 'Newton', 'Visitante'),
+(15, 'Wilza', 'Coelho', 'Estudante');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `estacionamento`
---
--- Creation: May 25, 2021 at 02:45 PM
 --
 
 CREATE TABLE `estacionamento` (
@@ -92,9 +91,6 @@ INSERT INTO `estacionamento` (`id`) VALUES
 --
 -- Table structure for table `fluxo`
 --
--- Creation: May 25, 2021 at 03:16 PM
--- Last update: Jun 15, 2021 at 01:39 AM
---
 
 CREATE TABLE `fluxo` (
   `id` int(11) NOT NULL,
@@ -113,17 +109,19 @@ INSERT INTO `fluxo` (`id`, `veiculo_id`, `estacionamento_id`, `data_entrada`, `d
 (2, 6, 3, '2021-06-13 17:57:55', '2021-06-14 01:37:08'),
 (4, 7, 1, '2021-06-14 01:04:26', '2021-06-14 03:42:43'),
 (5, 8, 6, '2021-06-14 01:15:44', '2021-06-15 00:45:46'),
-(6, 10, 1, '2021-06-15 00:28:32', NULL),
+(6, 10, 1, '2021-06-15 00:28:32', '2021-06-15 21:28:06'),
 (7, 9, 3, '2021-06-15 00:41:47', '2021-06-15 00:42:02'),
 (8, 1, 4, '2021-06-15 00:51:47', '2021-06-15 00:52:20'),
-(9, 6, 4, '2021-06-15 01:39:49', '2021-06-15 01:39:54');
+(9, 6, 4, '2021-06-15 01:39:49', '2021-06-15 01:39:54'),
+(10, 7, 4, '2021-06-15 14:56:47', '2021-06-15 14:56:55'),
+(11, 11, 6, '2021-06-15 21:27:47', '2021-06-16 17:59:47'),
+(12, 8, 20, '2021-06-16 18:32:24', '2021-06-16 18:33:16'),
+(13, 19, 4, '2021-06-16 18:51:24', NULL);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `funcionarios`
---
--- Creation: Jun 07, 2021 at 12:44 AM
 --
 
 CREATE TABLE `funcionarios` (
@@ -147,8 +145,6 @@ INSERT INTO `funcionarios` (`id`, `username`, `password`, `fullname`) VALUES
 --
 -- Table structure for table `veiculos`
 --
--- Creation: Jun 14, 2021 at 06:49 PM
---
 
 CREATE TABLE `veiculos` (
   `id` int(11) NOT NULL,
@@ -166,7 +162,15 @@ INSERT INTO `veiculos` (`id`, `matricula`, `client_id`) VALUES
 (7, 'BL-HB-45', 5),
 (8, 'AB-L4-16-C', 11),
 (9, 'AB-L45-LD', 5),
-(10, 'AB-LD-2014', 12);
+(10, 'AB-LD-2014', 12),
+(11, 'AB-LD-14', 10),
+(12, 'AB-LD-2019', 13),
+(13, 'AL-CD-2020', 1),
+(14, 'AB-LD-2016', 13),
+(15, 'AB-ZD-2015', 14),
+(19, 'AB-CD-238', 15),
+(20, 'LIXO-33', 13),
+(21, 'ABCDEF', 15);
 
 --
 -- Indexes for dumped tables
@@ -214,7 +218,7 @@ ALTER TABLE `veiculos`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `estacionamento`
@@ -226,7 +230,7 @@ ALTER TABLE `estacionamento`
 -- AUTO_INCREMENT for table `fluxo`
 --
 ALTER TABLE `fluxo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `funcionarios`
@@ -238,7 +242,7 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT for table `veiculos`
 --
 ALTER TABLE `veiculos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

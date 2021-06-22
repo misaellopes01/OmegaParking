@@ -19,6 +19,7 @@ import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +33,8 @@ public class Inicio extends javax.swing.JFrame {
   
     public Inicio() {
         initComponents();
+        UserComboBox.removeAllItems();
+        UserComboBox.addItem("Selecionar Proprietário");
         getUserComboBox();
         listarFuncionarios();
         listarClientes();
@@ -1899,13 +1902,14 @@ public class Inicio extends javax.swing.JFrame {
 
             ClientData clientData = new ClientData();
             clientData.InsertFunc(clientOBJ);
+            
             userFirstname.setText("Primeiro Nome");
             userSurname.setText("Sobrenome");
             
             UserComboBox.removeAllItems();
             UserComboBox.addItem("Selecionar Proprietário");
+            id_dono.clear();
             getUserComboBox();
-            listarClientes();
         }
     }//GEN-LAST:event_saveUserBtnActionPerformed
 
@@ -2005,6 +2009,10 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         SaveCar();
         listarClientes();
+        id_car.clear();
+        UserCarComboBox.removeAllItems();
+        UserCarComboBox.addItem("Selecionar Veiculo");
+        getUserCarComboBox();
     }//GEN-LAST:event_saveCarBtnActionPerformed
     
     private void SaveCar(){
@@ -2016,10 +2024,10 @@ public class Inicio extends javax.swing.JFrame {
                 ) {
             JOptionPane.showMessageDialog(null, "Preencha devidamente os campos!");
         } else {
-            int id_prop;
+            int id_prop=0;
             String matricula;
             id_prop = id_dono.get(UserComboBox.getSelectedIndex() - 1);
-            matricula = UserMatricula.getText();
+            matricula = UserMatricula.getText().toString();
 
             VeiculoController veiculoOBJ = new VeiculoController();
             veiculoOBJ.setId_prop(id_prop);
@@ -2027,11 +2035,14 @@ public class Inicio extends javax.swing.JFrame {
 
             VeiculoData veiculoData = new VeiculoData();
             veiculoData.InsertFunc(veiculoOBJ);
+            
             listarClientes();
+            
             UserComboBox.removeAllItems();
             UserComboBox.addItem("Selecionar Proprietário");
-            getUserComboBox();
             UserMatricula.setText("Matrícula do Veículo");
+            id_dono.clear();
+            getUserComboBox();
             
         }
        
@@ -2042,6 +2053,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         UserComboBox.removeAllItems();
         UserComboBox.addItem("Selecionar Proprietário");
+        id_dono.clear();
         getUserComboBox();
         UserMatricula.setText("Matrícula do Veículo");
     }//GEN-LAST:event_resetCarBtnActionPerformed
@@ -2079,8 +2091,11 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (funcTable.getSelectedRow() == -1 ) {
            JOptionPane.showMessageDialog(null, "Selecione uma Linha da Tabela!"); 
-        } else {
+        }  else {
             carregarCampos();
+            if(FuncUpdateUsername.getText().equals("admin")) {
+                FuncUpdateUsername.setEnabled(false);
+            }
         }
         
     }//GEN-LAST:event_LoadUpdateActionPerformed
@@ -2131,7 +2146,7 @@ public class Inicio extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "Selecione uma Linha da Tabela Para Eliminar!");
         } else if(funcID.getText().equals("1")) {
             JOptionPane.showMessageDialog(null, "Não tem Permissão para Eliminar o Usuário Administrador!\n CONTACTE O ADMINISTRADOR DA BASE DE DADOS");
-        }else {
+        } else {
             EliminarFuncionario();
             listarFuncionarios();
             Limpar();
@@ -2157,6 +2172,10 @@ public class Inicio extends javax.swing.JFrame {
         } else {
             AlterarClient();
             listarClientes();
+            id_car.clear();
+            UserCarComboBox.removeAllItems();
+            UserCarComboBox.addItem("Selecionar Veiculo");
+            getUserCarComboBox();
         }
         
     }//GEN-LAST:event_UpdateUserInfoActionPerformed
@@ -2172,7 +2191,11 @@ public class Inicio extends javax.swing.JFrame {
         } else {
             AlterarMatricula();
             listarClientes();
-             Clean();
+            Clean();
+            UserCarComboBox.removeAllItems();
+            UserCarComboBox.addItem("Selecionar Veiculo");
+            id_car.clear();
+            getUserCarComboBox();
         }
         
     }//GEN-LAST:event_UpdateUserCar1ActionPerformed
@@ -2304,8 +2327,7 @@ public class Inicio extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "View Relatorio -> Função getDataResultFuncView: " + e.getMessage());
         }
-    }
-    
+    }  
     
     private void Clean(){
         UserUpdateID.setText("");
@@ -2316,6 +2338,7 @@ public class Inicio extends javax.swing.JFrame {
         UserSobrenomeUpdate1.setText("");
         CarMatriculaUpdate.setText("");
     }
+    
     Vector<Integer> id_dono = new Vector<Integer>();
     
     public void getUserComboBox(){
@@ -2331,7 +2354,10 @@ public class Inicio extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "View ClientData -> Função Proprietário: " + e.getMessage());
         }
+        
+   
     }
+    
     public void getDataSelectFunc(){
         try {
             EstacionamentoData estacionamentoData = new EstacionamentoData();
@@ -2500,6 +2526,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> userType;
     private javax.swing.JComboBox<String> userTypeUpdate;
     // End of variables declaration//GEN-END:variables
+    
     private void listarFuncionarios(){
         try {
             FuncionarioData funcionarioData = new FuncionarioData();
@@ -2522,6 +2549,7 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Listar Funcionarios: " + e);
         }
     }
+    
     private void listarClientes(){
         try {
             ClientVeiculoData clientData = new ClientVeiculoData();
@@ -2596,7 +2624,6 @@ public class Inicio extends javax.swing.JFrame {
         }
     }
     
-    
     private void carregarCamposClientes(){
         int getSet = TableUserView.getSelectedRow();
         
@@ -2609,8 +2636,7 @@ public class Inicio extends javax.swing.JFrame {
         CarUpdateID.setText(TableUserView.getModel().getValueAt(getSet, 5).toString());
         userTypeUpdate.setSelectedItem(TableUserView.getModel().getValueAt(getSet, 3).toString());
               
-    }
-    
+    }   
     
     private void carregarCampos(){
         int getSet = funcTable.getSelectedRow();
@@ -2640,6 +2666,7 @@ public class Inicio extends javax.swing.JFrame {
         funcionarioData.AlterFunc(funcionarioOBJ);
         
     }
+    
     private void AlterarClient(){
         int id;
         String nome, sobrenome, tipo;
@@ -2657,7 +2684,12 @@ public class Inicio extends javax.swing.JFrame {
         ClientData clientData = new ClientData();
         clientData.AlterClient(clientOBJ);
         
+        id_car.clear();
+        UserCarComboBox.removeAllItems();
+        UserCarComboBox.addItem("Selecionar Veiculo");
+        getUserCarComboBox();
     }
+   
     private void AlterarMatricula(){
         int id;
         String matricula;
@@ -2671,6 +2703,10 @@ public class Inicio extends javax.swing.JFrame {
         VeiculoData carData = new VeiculoData();
         carData.AlterCar(veiculoOBJ);
         
+        id_car.clear();
+        UserCarComboBox.removeAllItems();
+        UserCarComboBox.addItem("Selecionar Veiculo");
+        getUserCarComboBox();
     }
     
     private void EliminarFuncionario(){
@@ -2684,7 +2720,9 @@ public class Inicio extends javax.swing.JFrame {
         FuncionarioData funcionarioData = new FuncionarioData();
         funcionarioData.DeleteFunc(funcionarioOBJ);
     }
+    
     int total, ocupadas, free=0;
+    
     private void TotalVagas(){
 
         try {
@@ -2719,6 +2757,7 @@ public class Inicio extends javax.swing.JFrame {
          free = total - ocupadas;
          TotalVagasFree.setText(Integer.toString(free));
     }
+    
     Vector<Integer> id_car = new Vector<Integer>();
     
     public void getUserCarComboBox(){
@@ -2736,7 +2775,9 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "View ClientData -> Função Proprietário: " + e.getMessage());
         }
     }
+   
     Vector<Integer> id_vaga = new Vector<Integer>();
+    
     public void getVagaComboBox(){
         try {
             EstacionamentoData estData = new EstacionamentoData();
@@ -2777,6 +2818,9 @@ public class Inicio extends javax.swing.JFrame {
             CarParkingPlace.removeAllItems();
             CarParkingPlace.addItem("Selecionar Lugar");
             getVagaComboBox();
+            id_car.clear();
+            UserCarComboBox.removeAllItems();
+            UserCarComboBox.addItem("Selecionar Veiculo");
             getUserCarComboBox();
      
         }

@@ -88,7 +88,7 @@ public class EstacionamentoData {
 "EXTRACT(MINUTE FROM fluxo.data_entrada)) AS Entrada, CONCAT(EXTRACT(DAY FROM fluxo.data_saida),'/', \n" +
 "EXTRACT(MONTH FROM fluxo.data_saida),'/',EXTRACT(YEAR FROM fluxo.data_saida),' ', EXTRACT(HOUR FROM fluxo.data_saida), \n" +
 "'h:',EXTRACT(MINUTE FROM fluxo.data_saida)) AS Saida FROM fluxo, clientes, \n" +
-"veiculos WHERE fluxo.veiculo_id = veiculos.id AND clientes.id = veiculos.client_id ORDER BY fluxo.data_entrada";
+"veiculos WHERE fluxo.veiculo_id = veiculos.id AND clientes.id = veiculos.client_id ORDER BY fluxo.data_entrada;";
         conn = new Database().conexao();
         
         try {

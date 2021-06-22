@@ -325,6 +325,7 @@ public class loginForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField loginPassword;
     private javax.swing.JTextField loginUsername;
     // End of variables declaration//GEN-END:variables
+    
     private void Logar(){
         try {
             String username, password;

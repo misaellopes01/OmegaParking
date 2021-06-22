@@ -26,7 +26,7 @@ public class ClientData {
     
     
     public void InsertFunc(ClienteController clientOBJ){
-        String sql = "INSERT INTO `clientes` (nome, sobrenome, tipo) VALUES (?,?,?)";
+        String sql = "INSERT INTO `clientes` (nome, sobrenome, tipo) VALUES (?,?,?);";
         
         conn = new Database().conexao();
         try {
@@ -46,7 +46,7 @@ public class ClientData {
     
     public ResultSet propFunc(){
         conn = new Database().conexao();
-        String sql = "SELECT clientes.id, CONCAT(clientes.nome, ' ' , clientes.sobrenome) AS nome FROM clientes ORDER BY nome;";
+        String sql = "SELECT id, CONCAT(nome, ' ' , sobrenome) AS Nomes FROM clientes;";
         
         try {
             pst = conn.prepareStatement(sql);
@@ -56,7 +56,6 @@ public class ClientData {
             return null;
         }
     }
-    
     public ResultSet propFuncData(){
         conn = new Database().conexao();
         String sql = "SELECT clientes.id, CONCAT(clientes.nome, ' ' , clientes.sobrenome) AS nome FROM clientes ORDER BY nome;";

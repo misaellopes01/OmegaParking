@@ -12,8 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/misaellopes01/Documents/INFGE3/JavaProject/OmegaParking/src/Model/EstacionamentoData.java</file>
+            <file>file:/C:/Users/misaellopes01/Documents/INFGE3/JavaProject/OmegaParking/src/Controller/VeiculoController.java</file>
+            <file>file:/C:/Users/misaellopes01/Documents/INFGE3/JavaProject/OmegaParking/src/Model/ClientData.java</file>
+            <file>file:/C:/Users/misaellopes01/Documents/INFGE3/JavaProject/OmegaParking/src/Model/VeiculoData.java</file>
             <file>file:/C:/Users/misaellopes01/Documents/INFGE3/JavaProject/OmegaParking/src/Views/Inicio.java</file>
+            <file>file:/C:/Users/misaellopes01/Documents/INFGE3/JavaProject/OmegaParking/src/Model/UsuarioData.java</file>
         </group>
     </open-files>
 </project-private>
